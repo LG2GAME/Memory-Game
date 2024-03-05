@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+    /* Colors */
+    --af-white: #f0f0f0;
+    --cl-yellow: #fcb667;
+    --eerie-black: #252525;
+    --platinum: #d9d9d9;
+    --rich-black: #151921;
+    --white: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--cl-yellow);
+    border-radius: 9px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--rich-black);
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+	height: 100%;
+	scroll-behavior: smooth;
+	width: 100%;
+}
+
+body {
+    background-color: var(--rich-black);
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.min-height {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Position and style of Game Body */
+.game-body {
+    background-color: var(--rich-black);
+    display: grid;
+    gap: 20px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    width: 50%;
+    min-height: 90vh !important;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 13px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card/* .fliped */ .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    border: 2px solid #CCD5FF;
+    color: #FFFFFF;
+}
+.flip-card-front p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.flip-card-back {
+    border: 2px solid #CCD5FF;
+    transform: rotateY(180deg);
+}
+.flip-card-back img {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    object-fit: contain;
+}
