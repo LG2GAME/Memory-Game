@@ -18,7 +18,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/1.jpg">
+                    <img class="img-src" src="./img/1.jpg">
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/2.jpg">
+                    <img class="img-src" src="./img/2.jpg">
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/3.jpg">
+                    <img class="img-src" src="./img/3.jpg">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/4.jpg">
+                    <img class="img-src" src="./img/4.jpg">
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/5.jpg">
+                    <img class="img-src" src="./img/5.jpg">
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/6.jpg">
+                    <img class="img-src" src="./img/6.jpg">
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/7.jpg">
+                    <img class="img-src" src="./img/7.jpg">
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@ const renderGameBody = () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front"></div>
                 <div class="flip-card-back">
-                    <img src="./img/8.jpg">
+                    <img class="img-src" src="./img/8.jpg">
                 </div>
             </div>
         </div>
@@ -98,21 +98,22 @@ const renderGameBody = () => {
     const flipCard = document.querySelectorAll(".flip-card");
         flipCard.forEach(FC => {
             FC.addEventListener("click", () => {
-                FC.classList.add("fliped", "clickedCard");
+                let cardImg = document.getElementsByClassName("img-src");
 
-                const cards = document.querySelectorAll(".clickedCard");
-                if(cards.length >= 2) {
-                    cards.forEach(element => {
-                        if(cards[0].classList == cards[1].classList) {
-                            console.log("true")
-                        } else console.log("false")
-                    })
-                }
+                FC.classList.add("fliped");
+                let fliepdItem = document.getElementsByClassName("fliped");
+
+                if(fliepdItem.length >= 2) {
+                    if(fliepdItem[0].querySelector(".img-src").getAttribute("src") == fliepdItem[1].querySelector(".img-src").getAttribute("src")) {
+                        console.log("Przed usunięciem: " + fliepdItem.length)
+                    };
+                    
+                    fliepdItem[0].classList.remove("fliped");
+                    fliepdItem[1].classList.remove("fliped");
+                    console.log("Po usunięciu: " + fliepdItem.length)
+                };
             });
         });
-
-        
-
     // Game Rules
 }
 
