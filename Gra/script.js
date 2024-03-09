@@ -1,6 +1,6 @@
 const renderGameBody = () => {
 
-    // Generate Images
+    // Random element planning
     const documentGameBody = document.getElementById("gameBody");
     let RNG = Math.floor(Math.random() * 10);
     let RNGArray = [16];
@@ -13,6 +13,7 @@ const renderGameBody = () => {
         RNG = Math.floor(Math.random() * 16)
     }
 
+    // Array with game items
     const gameBodyItemsArr = [
         `<div class="flip-card card-1">
             <div class="flip-card-inner">
@@ -94,24 +95,32 @@ const renderGameBody = () => {
     }
 
     
-    // Flip Card on Click
+    // Game rules
     const flipCard = document.querySelectorAll(".flip-card");
         flipCard.forEach(FC => {
             FC.addEventListener("click", () => {
                 let cardImg = document.getElementsByClassName("img-src");
+                let flippedItem = document.getElementsByClassName("flipped");
 
-                FC.classList.add("fliped");
-                let fliepdItem = document.getElementsByClassName("fliped");
-
-                if(fliepdItem.length >= 2) {
-                    if(fliepdItem[0].querySelector(".img-src").getAttribute("src") == fliepdItem[1].querySelector(".img-src").getAttribute("src")) {
-                        console.log("Przed usunięciem: " + fliepdItem.length)
-                    };
+                // Adding flipped class
+                FC.classList.add("flipped");
+                
+                if(flippedItem.length >= 1) {
+                    if(flippedItem[0].querySelector(".img-src").getAttribute("src") == flippedItem[1].querySelector(".img-src").getAttribute("src")) {
+                        for(let i = flippedItem.length; i > 0; i--) {
+                            flippedItem[0].classList.add("correctAnswer");
+                            flippedItem[0].classList.remove("flipped");
+                        };
+                    } else {
+                        setTimeout(function() {
+                            for(let i = flippedItem.length; i > 0; i--) {
+                                flippedItem[0].classList.remove("flipped");
+                            };
+                        }, 1000);
+                    }
+                } else {
                     
-                    fliepdItem[0].classList.remove("fliped");
-                    fliepdItem[1].classList.remove("fliped");
-                    console.log("Po usunięciu: " + fliepdItem.length)
-                };
+                }
             });
         });
     // Game Rules
